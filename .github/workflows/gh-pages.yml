@@ -1,11 +1,10 @@
 name: Deploy Hugo PaperMod Demo to Pages
-
 on:
   push:
     paths-ignore:
-      - "images/**"
-      - "LICENSE"
-      - "README.md"
+      - 'images/**'
+      - 'LICENSE'
+      - 'README.md'
     branches:
       - master
       - exampleSite
@@ -13,26 +12,22 @@ on:
     # manual run
     inputs:
       hugoVersion:
-        description: "Hugo Version"
+        description: 'Hugo Version'
         required: false
-        default: "0.112.4"
-
+        default: '0.112.4'
 # Allow one concurrent deployment
 concurrency:
-  group: "pages"
+  group: 'pages'
   cancel-in-progress: true
-
 # Default to bash
 defaults:
   run:
     shell: bash
-
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
-
 jobs:
   # Build job
   build:
@@ -48,6 +43,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: exampleSite
+          submodules: true
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v3
